@@ -14,7 +14,7 @@ $(document).ready(function() {
     },
   
     submitHandler: function(form) {
-
+      
       const id = localStorage.getItem('userId');
       const email = $('#email').val();      
 
@@ -25,6 +25,5 @@ $(document).ready(function() {
 
       sendPostRequest('http://httpbin.org/post', formData);
     }    
-
   }); 
 });

@@ -1,30 +1,35 @@
-function setUserId() {
-  if (localStorage.getItem('userId') === null) {
-      const userId = generateUID();
-      localStorage.setItem('userId', userId)
+function getUserID() {
+  if (localStorage.getItem('userID') === null) {
+      const userID = generateUID();
+      localStorage.setItem('userID', userID)
   }
+
+  return localStorage.getItem('userID');
 }
 
-function getUserData() {
-  const currentUrl = $(location).attr('href');
-  const currentDate = new Date().toLocaleString();
-  const userId = localStorage.getItem('userId');
-  
-  const userData = {
-    id: userId,
-    url: currentUrl,
-    date: currentDate,
-  };
-  return userData;
-}
+function Data(user, url, date)
 
-function sendUserData(appUrl) {
-  const userData = getUserData();
-  sendPostRequest(appUrl, userData);
-}
+  this.user = user;
+  this.url = url;
+  this.date = date;
+
+  function sendToApp(appUrl) {
+ 
+     data = {
+        user: this.user,
+        url: this.url,
+        date: this.date,
+      };
+
+      sendPostRequest(appUrl, data)
 
 $(document).ready(function() {
+
   const appUrl = 'http://httpbin.org/post';
-  setUserId();
-  sendUserData(appUrl);
+  const userID = getUserID();
+  const currentUrl = $(location).attr('href');
+  const currentDate = new Date().toLocaleString();
+
+  data = new Data(userID, currentUrl, currentDate);
+  data.sendToApp(appUrl);  
 }); 
