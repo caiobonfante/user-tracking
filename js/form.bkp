@@ -1,0 +1,18 @@
+$(document).ready(function() {
+ 
+  $('#submit').click(function() {
+  
+    if($("#form").validate()) {
+  
+      const id = localStorage.getItem('userId');
+      const email = $('#email').val();
+
+      formData = {
+        id: id,
+        email: email,
+      };
+      sendPostRequest('http://httpbin.org/post', formData);
+    }
+
+  });
+});
