@@ -7,7 +7,7 @@ function getUserID() {
   return localStorage.getItem('userID');
 }
 
-function Data(user, url, date)
+function Data(user, url, date) {
 
   this.user = user;
   this.url = url;
@@ -22,6 +22,8 @@ function Data(user, url, date)
       };
 
       sendPostRequest(appUrl, data)
+   }
+}
 
 $(document).ready(function() {
 
