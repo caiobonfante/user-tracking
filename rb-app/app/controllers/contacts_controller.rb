@@ -1,12 +1,18 @@
 class ContactsController < ApplicationController
+  def index
+  end
+
   def create
-    @contact = Contact.new(contact_params)
-    
+    @contact = Contact.create(params.require(:contact).permit([:email, :user]))
     @contact.save
   end
 
-  private
-    def contact_params
-      params.require(:contact).permit(:user, :email)
-    end  
+  def show
+    @contact = Contact.find(params[:id])
+    respond_to do |format|
+      format.html 
+      format.json { render json: @contact }
+      format.xml { render xml: @contact }
+  end
 end
+

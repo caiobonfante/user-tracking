@@ -1,4 +1,5 @@
 function getUserID() {
+
   if (localStorage.getItem('userID') === null) {
       const userID = generateUID();
       localStorage.setItem('userID', userID)
