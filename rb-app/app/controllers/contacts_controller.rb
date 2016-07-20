@@ -4,8 +4,10 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.create(params.require(:contact).permit([:email, :user]))
-    @contact.save
-  end
+    if @contact.save
+      flash[:success] = "Contato criado!"
+      redirect_to root_path
+    end
 
   def show
     @contact = Contact.find(params[:id])
@@ -13,6 +15,6 @@ class ContactsController < ApplicationController
       format.html 
       format.json { render json: @contact }
       format.xml { render xml: @contact }
-  end
+    end
 end
 
