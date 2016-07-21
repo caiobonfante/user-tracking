@@ -4,20 +4,17 @@ class AccessesController < ApplicationController
   end
 
   def create
-    @access = Access.create(params.require(:access).permit([:user, :url, :date]))
-    if @access
-      flash[:success] = "Contato criado!"
-      redirect_to root_path
-    end
+    Access.create(params.require(:access).permit([:user, :url, :date]))
+    redirect_to all_accesses_path
   end
 
   def show
     @access = Access.find(params[:id])
+
     respond_to do |format|
       format.html
       format.json { render json: @access }
       format.xml { render xml: @access }
     end
   end
-
 end

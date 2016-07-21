@@ -5,6 +5,12 @@ Rails.application.routes.draw do
 
   get 'accesses/create'
 
+  get 'accesses' => 'accesses#index',
+    as: 'all_accesses'
+
+  get 'accesses/:id' => 'accesses#show',
+    as: 'access'
+
   get 'contacts/index'
 
   get 'contacts/create'
