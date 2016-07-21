@@ -1,6 +1,10 @@
 class Contact < ApplicationRecord
   validates :user, 
-            presence: true
+            presence: true,
+            uniqueness: true
+
   validates :email, 
-            presence: true
+            presence: true,
+            uniqueness: true
+          
 end

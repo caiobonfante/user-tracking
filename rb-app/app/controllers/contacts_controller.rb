@@ -4,11 +4,8 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.create(params.require(:contact).permit([:email, :user]))
-    if @contact
-      flash[:success] = "Contato criado!"
-      redirect_to root_path
-    end
+    Contact.create(params.require(:contact).permit([:email, :user]))
+    redirect_to root_path
   end
 
   def show

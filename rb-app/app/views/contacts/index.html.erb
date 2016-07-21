@@ -1,6 +1,6 @@
 <h1>Contatos</h1>
 <% @contacts.all.each do |contact| %>
-  <p><%= contact.email %></p>
+  <p><%= link_to contact.email, contact_path(contact.email) %></p>
 <% end %>
 <% if @contacts.all.size == 0 %>
   <em>Nenhum contato encontrado!</em>

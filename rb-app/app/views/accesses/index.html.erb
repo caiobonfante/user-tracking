@@ -1,0 +1,17 @@
+<h1>Acessos</h1>
+<table>
+  <tr>
+    <th></th>
+  </tr>
+<% @accesses.all.each do |access| %>
+ <tr>
+  <td><b>Usuário:</b> <%= access.user %></td>
+  <td><b>Url:</b><%= access.url %></td>
+  <td><b>Data:</b><%= access.date %></td>
+ </tr>
+<% end %>
+<% if @accesses.all.size == 0 %>
+  <em>Nenhum acesso encontrado!</em>
+<% end %>
+</table>
+
