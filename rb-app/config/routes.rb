@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     as: 'access'
 
   delete 'accesses/:id' => 'accesses#destroy'
+ 
+  post 'accesses/' => 'accesses#create',
+    defaults: {format: :json}
 
   get 'contacts' => 'contacts#index', 
     as: 'all_contacts'
@@ -17,6 +20,8 @@ Rails.application.routes.draw do
 
   delete 'contacts/:email' => 'contacts#destroy',
     :constraints => { :email => /.+@.+\..*/ }
+
+  post 'contacts' => 'contacts#create'
 
   root :to => redirect('/contacts')
 
