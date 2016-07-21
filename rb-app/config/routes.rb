@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'accesses/index'
-
-  get 'accesses/show'
-
-  get 'accesses/create'
 
   get 'accesses' => 'accesses#index',
     as: 'all_accesses'
@@ -12,10 +7,6 @@ Rails.application.routes.draw do
     as: 'access'
 
   delete 'accesses/:id' => 'accesses#destroy'
-
-  get 'contacts/create'
-
-  get 'contacts/show'
 
   get 'contacts' => 'contacts#index', 
     as: 'all_contacts'
