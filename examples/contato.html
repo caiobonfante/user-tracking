@@ -1,4 +1,4 @@
-<doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -6,15 +6,43 @@
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
   <script src="js/user-tracking.js"></script>
-  <script src="js/form.js"></script>
+  <script src="js/form-validate.js"></script>
 </head>
 <body>
-   <a href="index.html">HOME</a> 
-   <a href="preco.html">PREÇO</a> 
-  </br>
-  <form id="form">
-    <input id="email" type="email" required>
-    </br></br>
-    <input id="submit" type="submit" value="Enviar">
-  </form>
+  <table align="center" width="100%">
+    <tr>
+      <td>
+        <table align="center">
+          <tr>
+            <td><h2>Bem vindo à minha página de teste! Visite os links abaixo para enviar dados para a aplicação.. </h2></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table align="center" cellspacing="10">
+          <tr>
+            <td><h2><a href="preco.html">PREÇO</a></h2></td>
+            <td><h2><a href="contato.html">CONTATO</h2></a></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table align="center">
+          <tr>
+            <td><b>Contato:</b></td>
+            <td>  
+              <form id="form">
+                <input id="email" type="email" required>
+                <input id="submit" type="submit" value="Criar">
+              </form>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
