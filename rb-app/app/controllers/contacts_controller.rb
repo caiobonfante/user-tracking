@@ -1,5 +1,11 @@
 class ContactsController < ApplicationController
 
+  before_action :get_contact, only: [:show, :destroy]
+
+  def get_contact
+      @contact = Contact.find_by_email(params[:email])
+  end
+
   def index
     @contacts = Contact.all
   end
@@ -10,9 +16,7 @@ class ContactsController < ApplicationController
   end
 
   def show
-    @contact = Contact.find_by_email(params[:email])
     @contact_accesses = Access.where(user: @contact.user)
-
     respond_to do |format|
       format.html 
       format.json { render json: @contact }
@@ -21,7 +25,7 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    Contact.where(email: params[:email]).destroy_all
+    @contact.destroy
     redirect_to all_contacts_path
   end
 end
