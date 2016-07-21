@@ -1,5 +1,10 @@
 class Access < ApplicationRecord
-  validates :user, presence: true
-            :url, presence: true
-            :date, presence: true
+  validates :user, 
+            presence: true
+
+  validates :url, 
+            presence: true
+
+  validates :date, 
+            presence: true
 end

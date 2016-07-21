@@ -1,15 +1,8 @@
 <h1>Contatos</h1>
-<table>
-  <tr>
-    <th>Email</th>
-  </tr>
-<% Contact.all.each do |contact| %>
- <tr>
-  <td><%= contact.email %></td>
- </tr>
+<% @contacts.all.each do |contact| %>
+  <p><%= contact.email %></p>
 <% end %>
-<% if Contact.all.size == 0 %>
+<% if @contacts.all.size == 0 %>
   <em>Nenhum contato encontrado!</em>
 <% end %>
-</table>
 

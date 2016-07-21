@@ -1,3 +1,13 @@
+function generateUID() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
+
 function getUserID() {
 
   if (localStorage.getItem('userID') === null) {
@@ -8,7 +18,7 @@ function getUserID() {
   return localStorage.getItem('userID');
 }
 
-function Data(user, url, date) {
+function Access(user, url, date) {
 
   this.user = user;
   this.url = url;
@@ -16,13 +26,13 @@ function Data(user, url, date) {
 
   function sendToApp(appUrl) {
  
-     data = {
+     access = {
         user: this.user,
         url: this.url,
         date: this.date,
       };
 
-      sendPostRequest(appUrl, data)
+      $.post(appUrl, access)
    }
 }
 
@@ -33,6 +43,6 @@ $(document).ready(function() {
   const currentUrl = $(location).attr('href');
   const currentDate = new Date().toLocaleString();
 
-  data = new Data(userID, currentUrl, currentDate);
-  data.sendToApp(appUrl);  
+  access = new Access(userID, currentUrl, currentDate);
+  access.sendToApp(appUrl);  
 }); 

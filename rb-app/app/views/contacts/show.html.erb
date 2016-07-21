@@ -1,2 +1,12 @@
-<p>Email: <%= @contact.email %></p></br>
-<p>ID: <%= @contact.user %></p>
+<p><b>Email:</b> <%= @contact.email %></p>
+<p><b>ID:</b><%= @contact.user %></p>
+
+<h2>Acessos</h2>
+
+<% @contact_accesses.all.each do |access| %>
+ <tr>
+  <td><b>Url:</b> <%= access.url %></td>
+  <td><b>Data:</b> <%= access.date %></td>
+ </tr>
+<% end %>
+
