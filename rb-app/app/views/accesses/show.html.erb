@@ -1,3 +1,8 @@
-<p><b>Usuário:</b> <%= @access.user %></p>
-<p><b>Url:</b> <%= @access.url %></p>
-<p><b>Data de acesso:</b> <%= @access.date %></p>
+<table>
+  <tr>
+    <td><b>Usuário:</b> <%= @access.user %></td>
+    <td><b>Url:</b> <%= @access.url %></td>
+    <td><b>Data de acesso:</b> <%= @access.date %></td>
+    <td><%= link_to "Excluir", access_path(@access.id), method: :delete %></td>
+  </tr>
+</table>

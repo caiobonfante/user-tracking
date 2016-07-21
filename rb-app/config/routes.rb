@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'accesses/:id' => 'accesses#show',
     as: 'access'
 
-  get 'contacts/index'
+  delete 'accesses/:id' => 'accesses#destroy'
 
   get 'contacts/create'
 
@@ -21,7 +21,10 @@ Rails.application.routes.draw do
     as: 'all_contacts'
 
   get 'contacts/:email' => 'contacts#show', 
-    as: 'contact' ,
+    :constraints => { :email => /.+@.+\..*/ },
+    as: 'contact'
+
+  delete 'contacts/:email' => 'contacts#destroy',
     :constraints => { :email => /.+@.+\..*/ }
 
   root :to => redirect('/contacts')

@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
 
   def create
     Contact.create(params.require(:contact).permit([:email, :user]))
-    redirect_to root_path
+    redirect_to all_contacts_path
   end
 
   def show
@@ -17,6 +17,11 @@ class ContactsController < ApplicationController
       format.json { render json: @contact }
       format.xml { render xml: @contact }
     end
+  end
+
+  def destroy
+    Contact.where(email: params[:email]).destroy_all
+    redirect_to (:back)
   end
 end
 

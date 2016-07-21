@@ -1,7 +1,12 @@
 <h1>Contatos</h1>
+<table>
 <% @contacts.all.each do |contact| %>
-  <p><%= link_to contact.email, contact_path(contact.email) %></p>
+  <tr>
+    <td><%= link_to contact.email, contact_path(contact.email) %></td>
+    <td><%= link_to "Excluir", contact_path(contact.email), method: :delete %></td>
+  </tr>
 <% end %>
+</table>
 <% if @contacts.all.size == 0 %>
   <em>Nenhum contato encontrado!</em>
 <% end %>

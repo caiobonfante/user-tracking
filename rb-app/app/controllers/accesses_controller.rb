@@ -17,4 +17,10 @@ class AccessesController < ApplicationController
       format.xml { render xml: @access }
     end
   end
+
+  def destroy
+    Access.destroy(params[:id])
+    redirect_to (:back)
+  end
+
 end
