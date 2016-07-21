@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+
   def index
     @contacts = Contact.all
   end
@@ -21,7 +22,7 @@ class ContactsController < ApplicationController
 
   def destroy
     Contact.where(email: params[:email]).destroy_all
-    redirect_to (:back)
+    redirect_to all_contacts_path
   end
 end
 

@@ -1,4 +1,5 @@
 class AccessesController < ApplicationController
+ 
   def index
     @accesses = Access.all
   end
@@ -20,7 +21,7 @@ class AccessesController < ApplicationController
 
   def destroy
     Access.destroy(params[:id])
-    redirect_to (:back)
+    redirect_to all_accesses_path
   end
 
 end
