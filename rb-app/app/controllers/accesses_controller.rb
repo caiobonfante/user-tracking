@@ -17,7 +17,7 @@ class AccessesController < ApplicationController
 
   def destroy
     Access.destroy(params[:id])
-    redirect_to all_accesses_path
+    redirect_to (:back)
   end
  
 end

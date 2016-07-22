@@ -22,7 +22,7 @@ class ContactsController < ApplicationController
 
   def destroy
     @contact.destroy
-    redirect_to all_contacts_path
+    redirect_to (:back)
   end
 end
 
