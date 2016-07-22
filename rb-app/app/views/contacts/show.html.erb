@@ -16,7 +16,6 @@
     <% else %>
         <td><%= link_to access.url.split('/').last.upcase, access_path(access.id) %></td>
     <% end %>
-        <td><%= link_to "Excluir", access_path(access.id), method: :delete %></td>
   </tr>
 <% end %>
 </table>
