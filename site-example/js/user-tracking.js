@@ -24,7 +24,7 @@ function Access(user, url, date) {
   this.url = url;
   this.date = date;
 
-  this.create = function (createUrl) {
+  this.postToApp = function (accessesUrl) {
 
      access = {
          user: this.user,
@@ -33,12 +33,12 @@ function Access(user, url, date) {
      };
 
      $.ajax({
-       url: createUrl,
-       type: "POST",
+       url: accessesUrl,
+       type: 'POST',
        crossDomain: true,
        data: JSON.stringify(access),
-       contentType: "application/json",
-       dataType: "json"
+       contentType: 'application/json',
+       dataType: 'json'
     });
   }
 
@@ -51,5 +51,5 @@ $(document).ready(function() {
   const currentDate = new Date().toLocaleString();
 
   const access = new Access(userID, currentUrl, currentDate);
-  access.create('https://damp-bayou-52784.herokuapp.com/accesses');  
+  access.postToApp('https://damp-bayou-52784.herokuapp.com/accesses');  
 }); 
