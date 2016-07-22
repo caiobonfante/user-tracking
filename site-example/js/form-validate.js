@@ -4,26 +4,22 @@ $(document).ready(function() {
 
     rules: {
       email: {
-        required:true,
+        required: true,
         email: true,
       } 
     },
   
-    messages: {
-      email: "Insira um email válido!",
-    },
-  
     submitHandler: function(form) {
       
-      const id = localStorage.getItem('userId');
+      const userID = localStorage.getItem('userID');
       const email = $('#email').val();      
 
-      formData = {
-        id: id,
+      contact = {
+        user: userID,
         email: email,
       }
 
-      sendPostRequest('http://httpbin.org/post', formData);
+      $.post('http://localhost:3000/contacts', contact)
     }    
   }); 
 });

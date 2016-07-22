@@ -24,33 +24,32 @@ function Access(user, url, date) {
   this.url = url;
   this.date = date;
 
-  function sendToApp(appUrl) {
- 
-     data = {
-        access: {
-          user: this.user,
-          url: this.url,
-          date: this.date,
-        }
-      };
+  this.create = function (createUrl) {
 
-      $.ajax({
-        url:appUrl,
-        type:"POST",
-        data:JSON.stringify(data),
-        contentType:"application/json; charset=utf-8",
-        dataType:"json"
-      });
-   }
+     access = {
+         user: this.user,
+         url: this.url,
+         date: this.date,
+     };
+
+     $.ajax({
+       url: createUrl,
+       type: "POST",
+       crossDomain: true,
+       data: JSON.stringify(access),
+       contentType: "application/json",
+       dataType: "json"
+    });
+  }
+
 }
 
 $(document).ready(function() {
 
-  const appUrl = 'https://peaceful-brushlands-35044.herokuapp.com/accesses';
   const userID = getUserID();
   const currentUrl = $(location).attr('href');
   const currentDate = new Date().toLocaleString();
 
-  access = new Access(userID, currentUrl, currentDate);
-  access.sendToApp(appUrl);  
+  const access = new Access(userID, currentUrl, currentDate);
+  access.create('https://damp-bayou-52784.herokuapp.com/accesses');  
 }); 
