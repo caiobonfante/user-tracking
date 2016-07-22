@@ -26,19 +26,27 @@ function Access(user, url, date) {
 
   function sendToApp(appUrl) {
  
-     access = {
-        user: this.user,
-        url: this.url,
-        date: this.date,
+     data = {
+        access: {
+          user: this.user,
+          url: this.url,
+          date: this.date,
+        }
       };
 
-      $.post(appUrl, access)
+      $.ajax({
+        url:appUrl,
+        type:"POST",
+        data:JSON.stringify(data),
+        contentType:"application/json; charset=utf-8",
+        dataType:"json"
+      });
    }
 }
 
 $(document).ready(function() {
 
-  const appUrl = 'http://httpbin.org/post';
+  const appUrl = 'https://peaceful-brushlands-35044.herokuapp.com/accesses';
   const userID = getUserID();
   const currentUrl = $(location).attr('href');
   const currentDate = new Date().toLocaleString();

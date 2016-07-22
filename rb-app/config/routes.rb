@@ -8,8 +8,7 @@ Rails.application.routes.draw do
 
   delete 'accesses/:id' => 'accesses#destroy'
  
-  post 'accesses/' => 'accesses#create',
-    defaults: {format: :json}
+  post 'accesses/' => 'accesses#create'
 
   get 'contacts' => 'contacts#index', 
     as: 'all_contacts'

@@ -25,15 +25,23 @@ function Access(user, url, date) {
   this.date = date;
 
   this.create = function (createUrl) {
- 
-     access = {
-        user: this.user,
-        url: this.url,
-        date: this.date,
-      };
 
-      $.post(createUrl, access)
-   }
+     access = {
+         user: this.user,
+         url: this.url,
+         date: this.date,
+     };
+
+     $.ajax({
+       url:createUrl,
+       type:"POST",
+       crossDomain: true,
+       data:JSON.stringify(access),
+       contentType:"application/json; charset=utf-8",
+       dataType:"jsonp"
+    });
+  }
+
 }
 
 $(document).ready(function() {
@@ -43,5 +51,5 @@ $(document).ready(function() {
   const currentDate = new Date().toLocaleString();
 
   const access = new Access(userID, currentUrl, currentDate);
-  access.create('http://httpbin.org/post');  
+  access.create('https://peaceful-brushlands-35044.herokuapp.com/accesses');  
 }); 

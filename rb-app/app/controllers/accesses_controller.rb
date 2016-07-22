@@ -1,11 +1,14 @@
 class AccessesController < ApplicationController
  
+  skip_before_action :verify_authenticity_token, if: :json_request?
+
   def index
     @accesses = Access.all
   end
 
   def create
-    Access.create(params.require(:access).permit([:user, :url, :date]))
+    Access.create(params[:access])
+    respond_with(status: 200)
     redirect_to all_accesses_path
   end
 
@@ -23,5 +26,8 @@ class AccessesController < ApplicationController
     Access.destroy(params[:id])
     redirect_to all_accesses_path
   end
+
+ def json_request? request.format.json?
+ end
 
 end

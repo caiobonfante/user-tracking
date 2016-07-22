@@ -11,7 +11,8 @@ class ContactsController < ApplicationController
   end
 
   def create
-    Contact.create(params.require(:contact).permit([:email, :user]))
+    @contact = Contact.create(params.require(:contact).permit([:email, :user]))
+    respond_with(@contact, status: 201)
     redirect_to all_contacts_path
   end
 
