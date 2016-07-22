@@ -8,22 +8,16 @@ Clone the project:
 
 Go to app path:
 
-   cd user-tracking/rb-app/
+    cd user-tracking/rb-app/
 
 Install dependencies
 
-   bundle install
+    bundle install
 
 Setup database:
 
-   rake db:migrate
+    rake db:migrate
 
 Run the server:
 
-   rails server
-
-#Javascript lib
-
-Include user-tracking.js lib in your pages to track users that visit them.
-
-   <script src="js/user-tracking.js"></script>
+    rails server
