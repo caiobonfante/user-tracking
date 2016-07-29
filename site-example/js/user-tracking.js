@@ -11,8 +11,8 @@ function generateUID() {
 function getUserID() {
 
   if (localStorage.getItem('userID') === null) {
-      const userID = generateUID();
-      localStorage.setItem('userID', userID)
+    const userID = generateUID();
+    localStorage.setItem('userID', userID)
   }
 
   return localStorage.getItem('userID');
@@ -27,9 +27,9 @@ function Access(user, url, date) {
   this.postToApp = function (accessesUrl) {
 
      access = {
-         user: this.user,
-         url: this.url,
-         date: this.date,
+       user: this.user,
+       url: this.url,
+       date: this.date,
      };
 
      $.ajax({
@@ -39,7 +39,7 @@ function Access(user, url, date) {
        data: JSON.stringify(access),
        contentType: 'application/json',
        dataType: 'json'
-    });
+     });
   }
 
 }
